@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: calc(10000vw / 375);
+}
+
+body {
+  font-size: .12rem;
+  line-height: 1.15;
+  color: #000;
+  font-family: -apple-system-font,"Helvetica Neue",sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.van-list__finished-text, .van-loading__spinner, .van-loading__text {
+  font-size: .13rem !important;
+}
+
+.van-loading__spinner {
+  width: 0.16rem !important;
+  height: 0.16rem !important;
+}
