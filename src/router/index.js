@@ -32,7 +32,17 @@ const routes = [{
   path: '/classifyDetail/:id',
   name: 'ClassifyDetail',
   component: () => import('views/classifyDetail/ClassifyDetail.vue')
-}
+},
+{
+  path: '/recommend/:id',
+  name: 'Recommend',
+  component: () => import('views/recommend/Recommend.vue')
+},
+{
+  path: '/detail/:id',
+  name: 'Detail',
+  component: () => import('views/detail/Detail.vue')
+},
 ]
 
 const router = createRouter({

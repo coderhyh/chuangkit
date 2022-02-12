@@ -104,7 +104,9 @@ export default {
     */
     async getData() {
       const url =
-        "/api/home/getDesignType.do?_dataType=json&client_type=40&second_kind_id="+this.id+"&_dataClientType=3";
+        "/api/home/getDesignType.do?_dataType=json&client_type=40&second_kind_id=" +
+        this.id +
+        "&_dataClientType=3";
       const { body } = await fetch(url).then((r) => r.json());
       this.titles = body.secondKindInfo.repoTag.use;
     },
@@ -129,7 +131,7 @@ export default {
           this.imgs = res.body.templates;
 
           this.$nextTick(() => {
-            this.$refs.waterfall.loading = false;
+            // this.$refs.waterfall.loading = false;
             this.$refs.waterfall.disposeData();
             this.$store.commit("setLoadingFlag", false);
           });
@@ -200,5 +202,10 @@ export default {
     background: #0773fc !important;
     color: #fff;
   }
+}
+.waterfallLayout {
+  overflow-y: scroll;
+  height: 5.12rem;
+  margin: 1.55rem 0 0;
 }
 </style>

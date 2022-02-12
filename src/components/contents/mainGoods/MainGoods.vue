@@ -11,10 +11,10 @@
 
     <div class="contnet">
       <router-link
-        to=""
         v-for="item in wrapItem.templates"
         :key="item.designTemplateId"
         :class="getClass(wrapItem.kindId)"
+        :to="'/detail/'+item.designTemplateId"
         @touchstart="start(item)"
         @touchmove="end"
         @touchend="end"

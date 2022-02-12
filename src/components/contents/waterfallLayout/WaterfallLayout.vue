@@ -8,8 +8,13 @@
     :immediate-check="false"
   >
     <section>
-      <ul v-for="(wrapItem, index) in column" :key="index">
-        <li v-for="(item, index) in wrapItem.list" :key="index">
+      <div class="wrap" v-for="(wrapItem, index) in column" :key="index">
+        <router-link
+          v-for="(item, index) in wrapItem.list"
+          :key="index"
+          :to="'/detail/' + item.designTemplateId"
+          class="item"
+        >
           <van-image
             width="100%"
             :height="item.h"
@@ -21,8 +26,8 @@
             "
           >
           </van-image>
-        </li>
-      </ul>
+        </router-link>
+      </div>
     </section>
   </van-list>
 </template>
@@ -62,7 +67,7 @@ export default {
   },
   methods: {
     onLoad() {
-      console.log("666123");
+      console.log("触底");
       this.$emit("getList");
     },
 
@@ -77,6 +82,7 @@ export default {
           this.column[index].h += parseInt(h);
           this.column[index].list.push(e);
         });
+        this.loading = false;
       }
     },
 
@@ -92,17 +98,16 @@ export default {
 
 <style lang="less" scoped>
 .waterfallLayout {
-  overflow-y: scroll;
-  height: 5.12rem;
-  margin: 1.55rem 0 0;
+  
   section {
     display: flex;
   }
-  ul {
+  .wrap {
     flex: 1;
     padding: 0 0.05rem;
     overflow: hidden;
-    li {
+    .item {
+      display: block;
       margin-top: 0.15rem;
       width: 100%;
       border-radius: 0.13rem;
