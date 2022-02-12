@@ -16,6 +16,7 @@
         :key="item.designTemplateId"
         :class="getClass(wrapItem.kindId)"
         @touchstart="start(item)"
+        @touchmove="end"
         @touchend="end"
       >
         <van-image
@@ -36,7 +37,9 @@
     </div>
 
     <div class="btn">
-      <div class="more">更多</div>
+      <router-link :to="'/classifyDetail/' + wrapItem.kindId" class="more"
+        >更多</router-link
+      >
       <div class="next" @click="next(wrapItem.kindId, index)">换一换</div>
     </div>
   </div>
@@ -49,7 +52,7 @@ export default {
   data() {
     return {
       page: 1,
-      time: null
+      time: null,
     };
   },
   props: {
@@ -70,8 +73,8 @@ export default {
       this.time = setTimeout(() => {
         this.setPreviewData({
           flag: true,
-          item
-        })
+          item,
+        });
       }, 500);
     },
     end() {
@@ -154,7 +157,8 @@ export default {
     display: flex;
     justify-content: space-between;
     margin-top: 0.15rem;
-    div {
+    div,
+    a {
       background: #f3f4f9;
       width: 48%;
       line-height: 0.4rem;

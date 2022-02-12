@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --van-list-loading-icon-size: .16rem !important;
+}
+
 html {
   font-size: calc(10000vw / 375);
 }
@@ -12,7 +16,7 @@ body {
   font-size: .12rem;
   line-height: 1.15;
   color: #000;
-  font-family: -apple-system-font,"Helvetica Neue",sans-serif;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
 }
 
 a {
@@ -24,11 +28,13 @@ img {
   height: 100%;
 }
 
-.van-list__finished-text, .van-loading__spinner, .van-loading__text {
-  font-size: .13rem !important;
+.van-list__finished-text,
+.van-loading__spinner,
+.van-loading__text {
+  font-size: .13rem;
 }
 
 .van-loading__spinner {
-  width: 0.16rem !important;
-  height: 0.16rem !important;
+  width: 0.16rem;
+  height: 0.16rem;
 }

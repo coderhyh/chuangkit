@@ -27,6 +27,11 @@ const routes = [{
     component: () => import('views/profile/Profile.vue')
   },
   ]
+},
+{
+  path: '/classifyDetail/:id',
+  name: 'ClassifyDetail',
+  component: () => import('views/classifyDetail/ClassifyDetail.vue')
 }
 ]
 

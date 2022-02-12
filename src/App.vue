@@ -1,18 +1,25 @@
 <template>
   <div>
-    <router-view></router-view>
+    <router-view v-slot="{ Component }">
+      <keep-alive exclude="ClassifyDetail">
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
     <Preview></Preview>
+    <Loading></Loading>
   </div>
 </template>
 
 <script>
-import Preview from 'components/contents/preview/Preview.vue';
+import Preview from "components/contents/preview/Preview.vue";
+import Loading from 'components/common/loading/Loading.vue';
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Preview
-  }
+    Preview,
+    Loading
+  },
 };
 </script>
 

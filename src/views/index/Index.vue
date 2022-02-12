@@ -5,7 +5,7 @@
         <img src="~assets/imgs/index/headImg.png" alt="" />
       </div>
 
-      <Search></Search>
+      <Search text="200000+ 免费模板任你搜索"></Search>
     </div>
 
     <van-list

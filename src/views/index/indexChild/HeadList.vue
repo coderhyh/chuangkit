@@ -1,9 +1,9 @@
 <template>
   <div class="HeadList">
     <router-link
-      to=""
       v-for="item in scene.slice(0, 8)"
       :key="item.designKindId"
+      :to="'/classifyDetail/'+item.designKindId"
     >
       <van-image
         width=".55rem"
