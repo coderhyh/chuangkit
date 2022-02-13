@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Lazyload, Image as VanImage, Icon, List, Popup, Loading, Tab, Tabs } from 'vant';
+import { Lazyload, Image as VanImage, Icon, List, Popup, Loading, Tab, Tabs, Search } from 'vant';
 
 createApp(App)
   .use(VanImage)
@@ -13,6 +13,7 @@ createApp(App)
   .use(Loading)
   .use(Tab)
   .use(Tabs)
+  .use(Search)
 
   .use(store)
   .use(router)

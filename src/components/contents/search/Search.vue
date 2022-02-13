@@ -1,16 +1,24 @@
 <template>
   <div class="Search">
-    <section>
+    <router-link :to="'/search/'+params">
       <van-icon class="icon" name="search" />
       <p>{{ text }}</p>
-    </section>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
   name: "Search",
-  props: ["text"],
+  props: {
+    text: {
+      type: String,
+    },
+    params: {
+      type: String,
+      default: 'empty'
+    }
+  },
 };
 </script>
 
@@ -20,7 +28,7 @@ export default {
   z-index: 9999;
   background: #fff;
   padding: .1rem 0;
-  section {
+  a {
     width: 3.51rem;
     height: 0.34rem;
     background: #f8f8fb;

@@ -98,6 +98,7 @@ export default {
 
 <style lang="less" scoped>
 #Index {
+  height: 100vh;
   overflow: hidden;
 }
 .fixed {
@@ -115,7 +116,8 @@ export default {
 }
 .scroll {
   margin: 1.12rem 0 0.46rem;
-  overflow: hidden;
+  height: 5.09rem;
+  overflow: scroll;
 }
 
 </style> 

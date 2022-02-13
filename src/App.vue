@@ -1,9 +1,10 @@
 <template>
   <div>
     <router-view v-slot="{ Component }">
-      <keep-alive exclude="ClassifyDetail,Detail">
+      <keep-alive v-if="$route.meta.needKeepAlive">
         <component :is="Component" />
       </keep-alive>
+      <component v-else :is="Component" />
     </router-view>
     <Preview></Preview>
     <Loading></Loading>
@@ -12,13 +13,16 @@
 
 <script>
 import Preview from "components/contents/preview/Preview.vue";
-import Loading from 'components/common/loading/Loading.vue';
+import Loading from "components/common/loading/Loading.vue";
 
 export default {
   name: "App",
   components: {
     Preview,
-    Loading
+    Loading,
+  },
+  created() {
+    // console.log(this.$route.meta.needKeepAlive, 'app');
   },
 };
 </script>

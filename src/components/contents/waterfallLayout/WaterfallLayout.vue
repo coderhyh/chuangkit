@@ -62,9 +62,6 @@ export default {
       },
     },
   },
-  computed: {
-    ...mapState(["strategyHeadNav"]),
-  },
   methods: {
     onLoad() {
       console.log("触底");
@@ -73,16 +70,18 @@ export default {
 
     disposeData() {
       if (this.totalList.length) {
-        this.reset();
+        // this.reset();
         this.totalList.forEach((e, i) => {
           const { height, width } = e;
           let index = this.column[0].h > this.column[1].h ? 1 : 0;
-          let h = (parseInt(height) / parseInt(width)) * 1.68 + "rem";
+          let h = (parseInt(height) / parseInt(width)) * 168 + "px";
           e.h = h;
-          this.column[index].h += parseInt(h);
+          this.column[index].h += parseInt(h) + 10;
           this.column[index].list.push(e);
         });
         this.loading = false;
+      }else {
+        this.reset();
       }
     },
 
@@ -107,8 +106,9 @@ export default {
     padding: 0 0.05rem;
     overflow: hidden;
     .item {
+      border: 1px solid #CCCCCC;
       display: block;
-      margin-top: 0.15rem;
+      margin-bottom: 0.15rem;
       width: 100%;
       border-radius: 0.13rem;
       overflow: hidden;

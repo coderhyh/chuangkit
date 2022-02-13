@@ -6,7 +6,7 @@
   >
     <div class="title">
       <p class="p1">{{ wrapItem.name }}</p>
-      <p class="p2">进入场景</p>
+      <router-link :to="'/classifyDetail/' + wrapItem.kindId" class="p2">进入场景</router-link>
     </div>
 
     <div class="contnet">
@@ -118,9 +118,12 @@ export default {
     justify-content: space-between;
     align-items: center;
     .p1 {
-      font-size: 0.16rem;
       color: #000;
+      font-size: 0.16rem;
       font-weight: 600;
+    }
+    .p2 {
+      color: #333;
     }
   }
   .contnet {

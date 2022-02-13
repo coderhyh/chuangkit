@@ -1,7 +1,7 @@
 <template>
   <div class="ClassifyDetail">
     <div class="headFixed">
-      <Search text="在当前场景下搜索"></Search>
+      <Search text="在当前场景下搜索" :params="id"></Search>
 
       <HeadSelect
         :titles="titles"
@@ -204,7 +204,7 @@ export default {
   }
 }
 .waterfallLayout {
-  overflow-y: scroll;
+  overflow: scroll;
   height: 5.12rem;
   margin: 1.55rem 0 0;
 }

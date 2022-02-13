@@ -3,7 +3,7 @@
     <div class="title">{{ countList.title }}</div>
     <div class="list">
       <router-link
-        to=""
+        :to="'/detail/'+item.designTemplateId"
         v-for="item in countList.templates"
         :key="item.designTemplateId"
         :style="{
