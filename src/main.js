@@ -2,9 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Lazyload, Image as VanImage, Icon, List, Popup, Loading, Tab, Tabs, Search } from 'vant';
+
+import { Button, Lazyload, Image as VanImage, Icon, List, Popup, Loading, Tab, Tabs, Search, Field, CellGroup, NoticeBar, Cell, ActionSheet } from 'vant';
 
 createApp(App)
+  .use(Button)
   .use(VanImage)
   .use(Lazyload)
   .use(Icon)
@@ -14,6 +16,11 @@ createApp(App)
   .use(Tab)
   .use(Tabs)
   .use(Search)
+  .use(Field)
+  .use(CellGroup)
+  .use(NoticeBar)
+  .use(Cell)
+  .use(ActionSheet)
 
   .use(store)
   .use(router)

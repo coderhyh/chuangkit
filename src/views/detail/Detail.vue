@@ -58,11 +58,14 @@
         />
       </touchView>
     </div>
+
+    <FloorControl></FloorControl>
   </div>
 </template>
 
 <script>
 import touchView from "components/contents/preview/touchView.vue";
+import FloorControl from './detailChild/FloorControl';
 
 export default {
   name: "Detail",
@@ -76,6 +79,7 @@ export default {
   },
   components: {
     touchView,
+    FloorControl
   },
   methods: {
     select(item) {
@@ -101,7 +105,6 @@ export default {
   },
   created() {
     this.getData();
-    console.log("create detail");
   },
 };
 </script>

@@ -6,6 +6,7 @@
 
 :root {
   --van-list-loading-icon-size: .16rem !important;
+  --van-cell-icon-size: .25rem;
 }
 
 html {

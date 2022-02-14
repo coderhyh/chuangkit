@@ -55,7 +55,7 @@ export default {
   name: "ClassifyDetail",
   data() {
     return {
-      id: '0',
+      id: "0",
       titleIndex: 0,
       showPopup: false,
       showMoreLabel: false,
@@ -91,7 +91,6 @@ export default {
     WaterfallLayout,
   },
   beforeRouteEnter(to, from, next) {
-    console.log(from);
     next((vm) => {
       if (from.name == "Index") {
         vm.reset();
@@ -129,7 +128,6 @@ export default {
         this.id +
         "&_dataClientType=3";
       const { body } = await fetch(url).then((r) => r.json());
-      console.log(body);
       const res = body.secondKindInfo.repoTag;
       this.titles = res.use.length ? res.use : res.style;
     },

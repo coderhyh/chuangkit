@@ -7,6 +7,7 @@ export default createStore({
       item: {}
     },
     loadingFlag: false,
+    loginTip: false,
   },
   mutations: {
     setPreviewData(state, data) {
@@ -18,6 +19,9 @@ export default createStore({
     setLoadingFlag(state, data) {
       state.loadingFlag = data;
     },
+    setLoginTip(state, data) {
+      state.loginTip = data
+    }
   },
   actions: {
   },

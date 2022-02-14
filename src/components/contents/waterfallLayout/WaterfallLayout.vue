@@ -69,7 +69,6 @@ export default {
   },
   methods: {
     onLoad() {
-      console.log("触底");
       this.$emit("getList");
     },
 
@@ -89,7 +88,6 @@ export default {
     },
 
     reset() {
-      console.log("reset");
       this.column.forEach((e) => {
         e.h = 0;
         e.list = [];
