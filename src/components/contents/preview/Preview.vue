@@ -39,7 +39,8 @@ export default {
       );
     },
     getSrc() {
-      const url = this.previewData.item?.designTemplateThumbUrls?.[0];
+      const item = this.previewData.item;
+      const url = item?.designTemplateThumbUrls?.[0] || item?.designTemplateImageUrl;
       return (
         "https:" +
         url +

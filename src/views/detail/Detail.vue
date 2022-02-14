@@ -4,6 +4,9 @@
       <van-image
         lazy-load
         class="pic"
+        width="2.4rem"
+        height="4rem"
+        fit="contain"
         :src="
           'https:' +
           curData.designTemplateImageUrl +
@@ -22,7 +25,7 @@
     </div>
     <div class="labels">
       <router-link
-        to=""
+        :to="'/search?val=' + item"
         v-for="item in curData.keywords.split(' ')"
         :key="item"
         >{{ item }}</router-link
@@ -31,11 +34,11 @@
 
     <div class="title">为你推荐</div>
     <div class="recommend">
-      <router-link
-        to=""
+      <touchView
         @click="select(item)"
         v-for="item in recommend"
         :key="item.designTemplateId"
+        :item="item"
       >
         <van-image
           width="100%"
@@ -53,12 +56,14 @@
           src="~assets/imgs/index/label.png"
           alt=""
         />
-      </router-link>
+      </touchView>
     </div>
   </div>
 </template>
 
 <script>
+import touchView from "components/contents/preview/touchView.vue";
+
 export default {
   name: "Detail",
   data() {
@@ -68,6 +73,9 @@ export default {
       curData: {},
       recommend: [],
     };
+  },
+  components: {
+    touchView,
   },
   methods: {
     select(item) {
@@ -110,11 +118,6 @@ export default {
     align-items: center;
     justify-content: center;
     border-radius: 0.13rem;
-    .pic {
-      max-width: 2.8rem;
-      max-height: 4rem;
-      overflow: hidden;
-    }
   }
   .title {
     font-weight: 900;

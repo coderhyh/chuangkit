@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view v-slot="{ Component }" :class="{ showPreview: previewData.flag }">
-      <keep-alive include="Page">
+      <keep-alive include="Page,ClassifyDetail,Search">
         <component :is="Component" />
       </keep-alive>
     </router-view>

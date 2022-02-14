@@ -75,8 +75,7 @@
 import SearchText from "./searchChild/SearchText.vue";
 import WaterfallLayout from "components/contents/waterfallLayout/WaterfallLayout.vue";
 
-import { Notify } from "vant";
-
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "Search",
   data() {
@@ -103,11 +102,36 @@ export default {
     SearchText,
     WaterfallLayout,
   },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      if (to.query.val || from.name != "Detail") {
+        vm.reset();
+      }
+    });
+  },
   methods: {
+    reset() {
+      this.titleId = this.$route.query.id || 0;
+      this.value = this.$route.query.val || '';
+      this.pageNum = 0;
+      this.active = 0;
+      this.showList = false;
+      this.hotOrNew = 0;
+      /* 数据 */
+      this.historyList = [];
+      this.goodsList = [];
+      this.totalCount = 0;
+      if(this.value) {
+        this.$refs.waterfall.reset();
+        this.getData();
+      }
+    },
+
     onSearch(val) {
       if (!this.value.length) {
         return;
       }
+      this.pageNum = 0;
       this.getData();
 
       this.$nextTick(() => {

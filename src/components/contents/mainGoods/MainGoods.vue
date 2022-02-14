@@ -22,6 +22,7 @@
         <van-image
           class="pic"
           width="100%"
+          fit="cover"
           :height="
             (parseInt(item.height) / parseInt(item.width)) * 1.08 + 'rem'
           "

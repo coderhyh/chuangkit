@@ -1,15 +1,15 @@
 <template>
   <router-link
     class="touchView"
-    :to="to"
+    :to="to || ''"
     @touchstart="start"
     @touchmove="end"
     @touchend="end"
   >
     <slot></slot>
   </router-link>
-</template>
-
+</template> 
+ 
 <script>
 import { mapMutations } from "vuex";
 

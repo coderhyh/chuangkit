@@ -1,6 +1,6 @@
 <template>
   <div class="Search">
-    <router-link :to="'/search/'+params">
+    <router-link :to="'/search?id='+params">
       <van-icon class="icon" name="search" />
       <p>{{ text }}</p>
     </router-link>
@@ -9,14 +9,13 @@
 
 <script>
 export default {
-  name: "Search",
   props: {
     text: {
       type: String,
     },
     params: {
       type: String,
-      default: 'empty'
+      default: ''
     }
   },
 };

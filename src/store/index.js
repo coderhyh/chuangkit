@@ -6,7 +6,7 @@ export default createStore({
       flag: false,
       item: {}
     },
-    loadingFlag: false
+    loadingFlag: false,
   },
   mutations: {
     setPreviewData(state, data) {
@@ -17,7 +17,7 @@ export default createStore({
     },
     setLoadingFlag(state, data) {
       state.loadingFlag = data;
-    }
+    },
   },
   actions: {
   },

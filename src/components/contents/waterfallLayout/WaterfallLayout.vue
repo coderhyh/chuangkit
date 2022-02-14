@@ -20,6 +20,7 @@
             width="100%"
             :height="item.h"
             lazy-load
+            :key="index"
             :src="
               'https:' +
               item.designTemplateThumbUrls[0] +

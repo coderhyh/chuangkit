@@ -29,7 +29,7 @@
             @click="
               priceType = item.id;
               showMoreLabel = false;
-              labels[4].name = '筛选'
+              labels[4].name = '筛选';
             "
           >
             {{ item.name }}
@@ -54,9 +54,8 @@ import WaterfallLayout from "components/contents/waterfallLayout/WaterfallLayout
 export default {
   name: "ClassifyDetail",
   data() {
-    const id = this.$route.params.id;
     return {
-      id,
+      id: '0',
       titleIndex: 0,
       showPopup: false,
       showMoreLabel: false,
@@ -91,7 +90,28 @@ export default {
     HeadSelect,
     WaterfallLayout,
   },
+  beforeRouteEnter(to, from, next) {
+    console.log(from);
+    next((vm) => {
+      if (from.name == "Index") {
+        vm.reset();
+      }
+    });
+  },
   methods: {
+    reset() {
+      this.id = this.$route.params.id;
+      this.titleIndex = 0;
+      this.showPopup = false;
+      this.showMoreLabel = false;
+      this.pageNum = 0;
+      this.sortType = 0;
+      this.priceType = 0;
+
+      this.getData();
+      this.getList(true);
+    },
+
     sortTypeClick(id) {
       if (id != undefined) {
         this.sortType = id;
@@ -109,7 +129,9 @@ export default {
         this.id +
         "&_dataClientType=3";
       const { body } = await fetch(url).then((r) => r.json());
-      this.titles = body.secondKindInfo.repoTag.use;
+      console.log(body);
+      const res = body.secondKindInfo.repoTag;
+      this.titles = res.use.length ? res.use : res.style;
     },
     async getList(reset) {
       if (reset) {
@@ -147,14 +169,7 @@ export default {
         });
     },
   },
-  created() {
-    this.getData();
-    this.getList();
-  },
-  activated() {
-    
-    // console.log(11);
-  },
+  created() {},
   watch: {
     watchType: {
       handler() {
@@ -179,7 +194,7 @@ export default {
   }
 }
 .labels {
-  padding: 0.14rem 0.12rem .05rem;
+  padding: 0.14rem 0.12rem 0.05rem;
   max-height: 1rem;
   text-align: center;
   color: #313132;
