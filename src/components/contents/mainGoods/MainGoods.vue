@@ -6,18 +6,18 @@
   >
     <div class="title">
       <p class="p1">{{ wrapItem.name }}</p>
-      <router-link :to="'/classifyDetail/' + wrapItem.kindId" class="p2">进入场景</router-link>
+      <router-link :to="'/classifyDetail/' + wrapItem.kindId" class="p2"
+        >进入场景</router-link
+      >
     </div>
 
     <div class="contnet">
-      <router-link
+      <touchView
         v-for="item in wrapItem.templates"
         :key="item.designTemplateId"
         :class="getClass(wrapItem.kindId)"
-        :to="'/detail/'+item.designTemplateId"
-        @touchstart="start(item)"
-        @touchmove="end"
-        @touchend="end"
+        :to="'/detail/' + item.designTemplateId"
+        :item="item"
       >
         <van-image
           class="pic"
@@ -32,8 +32,13 @@
             '?v=1644589009809&x-oss-process=image/resize,w_300/format,jpg'
           "
         />
-        <img class="label" src="~assets/imgs/index/label.png" alt="" />
-      </router-link>
+        <img
+          class="label"
+          v-if="!item.price"
+          src="~assets/imgs/index/label.png"
+          alt=""
+        />
+      </touchView>
     </div>
 
     <div class="btn">
@@ -46,7 +51,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import touchView from "components/contents/preview/touchView.vue";
 
 export default {
   data() {
@@ -54,6 +59,9 @@ export default {
       page: 1,
       time: null,
     };
+  },
+  components: {
+    touchView,
   },
   props: {
     list: {
@@ -63,24 +71,7 @@ export default {
       },
     },
   },
-  computed: {
-    ...mapState(["previewData"]),
-  },
   methods: {
-    ...mapMutations(["setPreviewData"]),
-
-    start(item) {
-      this.time = setTimeout(() => {
-        this.setPreviewData({
-          flag: true,
-          item,
-        });
-      }, 500);
-    },
-    end() {
-      clearTimeout(this.time);
-    },
-
     getClass(id) {
       const arr = [20, 12];
       return {

@@ -29,6 +29,7 @@
             @click="
               priceType = item.id;
               showMoreLabel = false;
+              labels[4].name = '筛选'
             "
           >
             {{ item.name }}
@@ -39,7 +40,7 @@
 
     <WaterfallLayout
       :totalList="imgs"
-      @getList="getList"
+      @getList="getList()"
       ref="waterfall"
     ></WaterfallLayout>
   </div>
@@ -47,7 +48,7 @@
 
 <script>
 import Search from "components/contents/search/Search.vue";
-import HeadSelect from "components/contents/headSelect/HeadSelect.vue";
+import HeadSelect from "./classifyChild/headSelect/HeadSelect.vue";
 import WaterfallLayout from "components/contents/waterfallLayout/WaterfallLayout.vue";
 
 export default {
@@ -112,6 +113,7 @@ export default {
     },
     async getList(reset) {
       if (reset) {
+        this.$refs.waterfall.reset();
         this.pageNum = 0;
       }
       this.pageNum++;
@@ -122,6 +124,7 @@ export default {
       fetch("/pub" + body.cacheUrl.split(".com")[1])
         .then((r) => r.json())
         .then((res) => {
+          this.$refs.waterfall.finished = false;
           if (!res.body && !reset) {
             this.$refs.waterfall.finished = true;
             this.$store.commit("setLoadingFlag", false);
@@ -148,6 +151,10 @@ export default {
     this.getData();
     this.getList();
   },
+  activated() {
+    
+    // console.log(11);
+  },
   watch: {
     watchType: {
       handler() {
@@ -172,7 +179,7 @@ export default {
   }
 }
 .labels {
-  padding: 0.14rem 0.12rem;
+  padding: 0.14rem 0.12rem .05rem;
   max-height: 1rem;
   text-align: center;
   color: #313132;
@@ -204,8 +211,6 @@ export default {
   }
 }
 .waterfallLayout {
-  overflow: scroll;
-  height: 5.12rem;
   margin: 1.55rem 0 0;
 }
 </style>

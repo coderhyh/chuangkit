@@ -32,10 +32,10 @@
     <div class="title">为你推荐</div>
     <div class="recommend">
       <router-link
-        :to="'/detail/' + item.designTemplateId"
+        to=""
+        @click="select(item)"
         v-for="item in recommend"
         :key="item.designTemplateId"
-        replace
       >
         <van-image
           width="100%"
@@ -70,7 +70,14 @@ export default {
     };
   },
   methods: {
+    select(item) {
+      this.$router.replace("/detail/" + item.designTemplateId);
+      this.id = item.designTemplateId;
+      this.getData();
+    },
+
     async getData() {
+      this.$store.commit("setLoadingFlag", true);
       const url = `/api/designtemplate/getDetailCacheFileUrl.do?_dataType=json&_dataClientType=3`;
       const { body: res } = await fetch(url, {
         method: "POST",
@@ -79,17 +86,14 @@ export default {
         },
         body: "client_type=40&id=" + this.id,
       }).then((r) => r.json());
+      this.$store.commit("setLoadingFlag", false);
       this.curData = res.currentTemplate;
       this.recommend = res.recommendedTemplates;
     },
   },
   created() {
     this.getData();
-  },
-  watch: {
-    $route() {
-      this.$router.go(0);
-    },
+    console.log("create detail");
   },
 };
 </script>

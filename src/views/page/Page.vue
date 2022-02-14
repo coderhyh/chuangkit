@@ -1,10 +1,9 @@
 <template>
   <div id="page">
     <router-view v-slot="{ Component }">
-      <keep-alive v-if="$route.meta.needKeepAlive">
+      <keep-alive include="">
         <component :is="Component" />
       </keep-alive>
-      <component v-else :is="Component" />
     </router-view>
     <MainTabBar></MainTabBar>
   </div>

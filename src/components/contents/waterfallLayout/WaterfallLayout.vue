@@ -9,10 +9,11 @@
   >
     <section>
       <div class="wrap" v-for="(wrapItem, index) in column" :key="index">
-        <router-link
+        <touchView
           v-for="(item, index) in wrapItem.list"
           :key="index"
           :to="'/detail/' + item.designTemplateId"
+          :item="item"
           class="item"
         >
           <van-image
@@ -26,14 +27,14 @@
             "
           >
           </van-image>
-        </router-link>
+        </touchView>
       </div>
     </section>
   </van-list>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import touchView from "components/contents/preview/touchView.vue";
 
 export default {
   name: "waterfallLayout",
@@ -53,6 +54,9 @@ export default {
         },
       ],
     };
+  },
+  components: {
+    touchView,
   },
   props: {
     totalList: {
@@ -80,12 +84,11 @@ export default {
           this.column[index].list.push(e);
         });
         this.loading = false;
-      }else {
-        this.reset();
       }
     },
 
     reset() {
+      console.log("reset");
       this.column.forEach((e) => {
         e.h = 0;
         e.list = [];
@@ -97,7 +100,6 @@ export default {
 
 <style lang="less" scoped>
 .waterfallLayout {
-  
   section {
     display: flex;
   }
@@ -106,7 +108,7 @@ export default {
     padding: 0 0.05rem;
     overflow: hidden;
     .item {
-      border: 1px solid #CCCCCC;
+      border: 1px solid #cccccc;
       display: block;
       margin-bottom: 0.15rem;
       width: 100%;

@@ -1,6 +1,6 @@
 <template>
   <div class="Preview" v-show="previewData.flag">
-    <div class="mask" @click="setPreviewData({flag: false})"></div>
+    <div class="mask" @click="setPreviewData({ flag: false })"></div>
     <transition name="fade">
       <div class="content" v-show="previewData.flag">
         <van-image
@@ -39,9 +39,10 @@ export default {
       );
     },
     getSrc() {
+      const url = this.previewData.item?.designTemplateThumbUrls?.[0];
       return (
         "https:" +
-        this.previewData.item.designTemplateImageUrl +
+        url +
         "?v=undefined&x-oss-process=image/resize,w_600/format,jpg"
       );
     },

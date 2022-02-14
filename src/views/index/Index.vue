@@ -56,17 +56,13 @@ export default {
   },
   methods: {
     onLoad() {
-      console.log("end");
       this.page++;
       const url =
         "/v2/mobile/main/getSceneDetail.do?_dataType=json&_dataClientType=3&client_type=40&page_no=" +
         this.page +
         "";
       request(url, ({ body }) => {
-        console.log(body);
-
         this.list.push(...body.data.sceneDetail);
-        console.log(this.list.length, body.data.totalCount);
         if (this.list.length >= body.data.totalCount) {
           this.finished = true;
         }
@@ -92,13 +88,13 @@ export default {
   },
   created() {
     this.getData();
+    console.log('create index');
   },
 };
 </script>
 
 <style lang="less" scoped>
 #Index {
-  height: 100vh;
   overflow: hidden;
 }
 .fixed {
@@ -116,8 +112,6 @@ export default {
 }
 .scroll {
   margin: 1.12rem 0 0.46rem;
-  height: 5.09rem;
-  overflow: scroll;
 }
 
 </style> 

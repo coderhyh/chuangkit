@@ -23,7 +23,7 @@
   <van-popup
     v-model:show="show"
     position="top"
-    :style="{ height: '32%', top: '.97rem', overflow: 'hidden' }"
+    :style="{ top: '.97rem', overflow: 'hidden' }"
     :overlay-style="{ top: '.97rem' }"
   >
     <div class="zzcWrap">
@@ -126,6 +126,7 @@ export default {
   border-top: 1px solid #eeeeee;
   p {
     width: 0.74rem;
+    height: 0.3rem;
     line-height: 0.3rem;
     text-align: center;
     background: #f3f4f9;
